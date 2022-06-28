@@ -19,7 +19,7 @@ COPY --from=build /app ./
 # Copy SSH config 
 COPY sshd_config /etc/ssh/
 # Copy shell script
-COPY setup.sh 
+COPY setup.sh .
 
 EXPOSE 2222 80
 
