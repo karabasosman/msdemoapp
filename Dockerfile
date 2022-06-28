@@ -15,4 +15,12 @@ RUN dotnet publish -c release -o /app --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build /app ./
-ENTRYPOINT ["dotnet", "msdemoapp.dll"]
+
+# Copy SSH config 
+COPY sshd_config /etc/ssh/
+# Copy shell script
+COPY setup.sh 
+
+EXPOSE 2222 80
+
+ENTRYPOINT ["/setup.sh"]
