@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "futcommercialdevaks-06a3"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "futcommercialdevaks-06a3"
+  template:
+    metadata:
+      labels:
+        app: "futcommercialdevaks-06a3"
+    spec:
+      containers:
+        - name: "futcommercialdevaks-06a3"
+          image: "futcommercialacr.azurecr.io/futcommercialdevaks"
+          ports:
+          - containerPort: 8080
